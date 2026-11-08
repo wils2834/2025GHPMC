@@ -15,12 +15,12 @@ getwd()
 dir() #what files are in my wd?
 # tst=read.table(file.choose())#lets you pull files from folders
 
-meta = read.csv("2025_GH_PMC_SW_Run_1_10_06_25.csv", header=TRUE)
+meta = read.csv("2025_GH_PMC_SW - Run 1B 1_15_2026.csv", header=TRUE)
 #sample data and approx times, sep="," for csv
 
 str(meta)
 
-licor = read.table("20251007GHPMC.txt", header = TRUE,
+licor = read.table("20260115GHPMCadjusted.txt", header = TRUE,
                    sep="\t", #tab-delim
                    skip = 1, #skip the first two lines
                    col.names = c("date", "time", "ppm", "temp","press",
@@ -86,9 +86,9 @@ meta$ugC.L =as.numeric(meta$ugC.L)
 meta$days = as.numeric(meta$days)
 
 meta$ugC.L = (meta$ppm.corr*12*1)/(.082058*298.15)
+# Convert Weight.10g to numeric
+meta$Weight.10g <- as.numeric(meta$Weight.10g)
 #calculate in ug CO2-C per L using PV=nRT
-
-
 meta$ugC.g.day = ((meta$ugC.L*.932))/as.numeric(meta$Weight.10g)
 #calculate in ug CO2-C per g soil,
 #which = mg C/kg soil
@@ -101,7 +101,7 @@ meta$ugC.g.day = ((meta$ugC.L*.932))/ meta$Weight.10g
 
 head(meta)
 
-write.csv(meta, "DR PMC 2025 rd1 calcs full.csv",
+write.csv(meta, "DR PMC 2025 rd1B calcs full.csv",
           row.names = FALSE)
 
 #Run2----
@@ -109,12 +109,12 @@ getwd()
 dir() #what files are in my wd?
 # tst=read.table(file.choose())#lets you pull files from folders
 
-meta = read.csv("2025_GH_PMC_SW_Run_2_10_10_25.csv", header=TRUE)
+meta = read.csv("2025_GH_PMC_SW - Run 2B 1_22_2026.csv", header=TRUE)
 #sample data and approx times, sep="," for csv
 
 str(meta)
 
-licor = read.table("20251010GHPMC.txt", header = TRUE,
+licor = read.table("20260122GHPMCadjusted.txt", header = TRUE,
                    sep="\t", #tab-delim
                    skip = 1, #skip the first two lines
                    col.names = c("date", "time", "ppm", "temp","press",
@@ -178,7 +178,7 @@ meta$end = as.POSIXct(meta$end, format = "%H:%M")
 meta$days = (meta$end-meta$start)/(24*60*60)+1
 meta$ugC.L <- NA
 meta$ugC.L =as.numeric(meta$ugC.L)
-#meta$Weight.10g = as.numeric(meta$Weight.10g)
+meta$Weight.10g = as.numeric(meta$Weight.10g)
 meta$days = as.numeric(meta$days)
 
 meta$ugC.L = (meta$ppm.corr*12*1)/(.082058*298.15)
@@ -197,7 +197,7 @@ meta$ugC.g.day = ((meta$ugC.L*.932))/ meta$Weight.10g
 #.932 = L in jar
 head(meta)
 
-write.csv(meta, "DR PMC 2025 rd2 calcs full.csv",
+write.csv(meta, "DR PMC 2025 rd2B calcs full.csv",
           row.names = FALSE)
 
 #Run3
@@ -206,12 +206,12 @@ getwd()
 dir() #what files are in my wd?
 # tst=read.table(file.choose())#lets you pull files from folders
 
-meta = read.csv("2025_GH_PMC_SW_Run_3_10_15_25.csv", header=TRUE)
+meta = read.csv("2025_GH_PMC_SW - Run 3B 1_24_2026.csv", header=TRUE)
 #sample data and approx times, sep="," for csv
 
 str(meta)
 
-licor = read.table("20251015GHPMC.txt", header = TRUE,
+licor = read.table("20260124GHPMCadjusted.txt", header = TRUE,
                    sep="\t", #tab-delim
                    skip = 1, #skip the first two lines
                    col.names = c("date", "time", "ppm", "temp","press",
@@ -286,7 +286,7 @@ meta$ugC.g.day = ((meta$ugC.L*.932))/ meta$Weight.10g
 #.932 = L in jar
 head(meta)
 
-write.csv(meta, "DR PMC 2025 rd3 calcs full.csv",
+write.csv(meta, "DR PMC 2025 rd3B calcs full.csv",
           row.names = FALSE)
 
 
@@ -296,12 +296,12 @@ getwd()
 dir() #what files are in my wd?
 # tst=read.table(file.choose())#lets you pull files from folders
 
-meta = read.csv("2025_GH_PMC_SW_Run_4_10_23_25.csv", header=TRUE)
+meta = read.csv("2025_GH_PMC_SW - Run 4B 1_30_2026.csv", header=TRUE)
 #sample data and approx times, sep="," for csv
 
 str(meta)
 
-licor = read.table("20251022GHPMC.txt", header = TRUE,
+licor = read.table("20260129GHPMCadjusted.txt", header = TRUE,
                    sep="\t", #tab-delim
                    skip = 1, #skip the first two lines
                    col.names = c("date", "time", "ppm", "temp","press",
@@ -376,7 +376,7 @@ meta$ugC.g.day = ((meta$ugC.L*.932))/ meta$Weight.10g
 #.932 = L in jar
 head(meta)
 
-write.csv(meta, "DR PMC 2025 rd4 calcs full.csv",
+write.csv(meta, "DR PMC 2025 rd4B calcs full.csv",
           row.names = FALSE)
 
 
